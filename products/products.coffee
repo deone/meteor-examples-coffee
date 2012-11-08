@@ -1,4 +1,4 @@
-# this. can be replaced with @
+# @ is same as this.
 
 Products = new Meteor.Collection "Products"
 Cart = new Meteor.Collection "Cart"
@@ -9,13 +9,13 @@ if Meteor.isClient
 
 		Template.Products.events =
 			"click .Product": ->
-				if this.inStock
-					if Cart.find({name: this.name, price: this.price}).count() > 0
-						if confirm "Would you like to buy another #{this.name}?"
-							Cart.update {name: this.name, price: this.price}, {$inc: {quantity: 1}}
+				if @inStock
+					if Cart.find({name: @name, price: @price}).count() > 0
+						if confirm "Would you like to buy another #{@name}?"
+							Cart.update {name: @name, price: @price}, {$inc: {quantity: 1}}
 					else
-						if confirm "Would you like to buy a #{this.name} for $#{this.price}"
-							Cart.insert {name: this.name, price: this.price, quantity: 1}
+						if confirm "Would you like to buy a #{@name} for $#{@price}"
+							Cart.insert {name: @name, price: @price, quantity: 1}
 				else
 					alert "That item is not in stock"
 
@@ -23,7 +23,7 @@ if Meteor.isClient
 			Cart.find {}, {sort: {name: 1}}
 
 		Template.Cart.Total = ->
-			this.price * this.quantity
+			@price * @quantity
 
 		Template.Cart.SubTotal = ->
 			items = Cart.find {}
