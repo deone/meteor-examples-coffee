@@ -1,46 +1,46 @@
 <head>
-	<title>Products</title>
+  <title>Products</title>
 </head>
 
 <body>
-	{{> Products}}
-	{{> Cart}}
+  {{> Products}}
+  {{> Cart}}
 </body>
 
 <template name="Products">
-	{{#each ProductArr}}
-	<div class="Product">
-		<h2>{{name}}</h2>
-			<p>Price: ${{price}}</p>
-			{{#if this.inStock}}
-				<p>This item is in stock.</p>
-			{{else}}
-				<p>This item is currently sold out.</p>
-	    {{/if}}
-	</div>
-	{{/each}}
+  {{#each ProductArr}}
+  <div class="Product">
+    <h2>{{name}}</h2>
+      <p>Price: ${{price}}</p>
+      {{#if this.inStock}}
+        <p>This item is in stock.</p>
+      {{else}}
+        <p>This item is currently sold out.</p>
+      {{/if}}
+  </div>
+  {{/each}}
 </template>
 
 <template name="Cart">
-	<div id="Cart">
-		<table>
-			<tr>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Total</th>
-			</tr>
-			{{#each CartItems}}
-				<tr>
-					<td>{{name}}</td>
-					<td>${{price}}</td>
-					<td>{{quantity}}</td>
-					<td>${{Total}}</td>
-				</tr>
-			{{/each}}
-			<tr>
-				<td colspan="4">Total: ${{SubTotal}}</td>
-			</tr>
-		</table>
-	</div>
+  <div id="Cart">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+      {{#each CartItems}}
+        <tr>
+          <td>{{name}}</td>
+          <td>${{price}}</td>
+          <td>{{quantity}}</td>
+          <td>${{Total}}</td>
+        </tr>
+      {{/each}}
+      <tr>
+        <td colspan="4">Total: ${{SubTotal}}</td>
+      </tr>
+    </table>
+  </div>
 </template>
